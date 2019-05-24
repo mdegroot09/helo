@@ -4,7 +4,8 @@ module.exports = {
   register: async (req, res) => {
     let {username, password} = req.body
     const db = req.app.get('db')
-    let result = await db.get_manager(username)
+    let result = await db.get_user(username)
+    console.log('accessed')
     let existingUser = result[0]
 
     if (existingUser) {
@@ -14,35 +15,35 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10)
     const hash = bcrypt.hashSync(password, salt)
 
-    let registeredUser = await db.register_manager({first_name, last_name, email, company, username, hash})
-    let manager = registeredUser[0]
+    let registeredUser = await db.register_user({username, hash})
+    let user = registeredUser[0]
 
     req.session.user = {
-      id: manager.manager_id,
-      username: manager.username
+      id: user.user_id,
+      username: user.username
     }
 
-    res.status(201).send(manager)
+    res.status(201).send(user)
   },
 
   login: async (req, res) => {
     let {username, password} = req.body
     const db = req.app.get('db')
-    let foundUser = await db.get_manager(username)
-    let manager = foundUser[0]
+    let foundUser = await db.get_user(username)
+    let user = foundUser[0]
     
-    if (!manager) {
+    if (!user) {
       return res.status(401).send('User not found. Please register as a new user before logging in.')
     }
 
-    const isAuthenticated = bcrypt.compareSync(password, manager.hash)
+    const isAuthenticated = bcrypt.compareSync(password, user.hash)
     if (!isAuthenticated){
       return res.status(403).send('Incorrect password')
     }
 
     req.session.user = {
-      id: manager.manager_id,
-      username: manager.username
+      id: user.user_id,
+      username: user.username
     }
     res.status(200).send(req.session.user)
   },

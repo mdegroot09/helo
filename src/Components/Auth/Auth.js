@@ -1,4 +1,5 @@
 import React, {Component} from 'react'
+import axios from 'axios'
 
 export default class Auth extends Component {
   constructor(){
@@ -11,14 +12,41 @@ export default class Auth extends Component {
     }
   }
 
+  handleRegisterFormSubmit = async (e) => {
+		e.preventDefault()
+    const {username, password} = this.state
+		try {
+      const res = await axios.post('/auth/register', {username, password})
+      console.log('registered')
+      this.setState({username: username, password: '', registerError: false})
+      // this.props.updateUserId(res.data.user_id)
+			// this.props.updateUsername(username)
+      // this.props.history.push('/products')
+		} catch (err) {
+			this.setState({username: '', password: '', registerError: true})
+    }
+	}
+
+  handleLoginFormSubmit = async (e) => {
+		e.preventDefault()
+    const {username, password} = this.state
+		try {
+      const res = await axios.post('/auth/login', {username, password})
+      console.log('logged in')
+      this.setState({username: username, password: '', registerError: false})
+			// this.props.updateManagerId(res.data.id)
+			// this.props.updateUsername(username)
+      // this.props.history.push('/products')
+		} catch (err) {
+			this.setState({ username: '', password: '', loginError: true })
+    }
+	}
+
   handleChange = (e) => {
     this.setState({
       [e.target.name]: e.target.value,
       loginError: false
     })
-    setTimeout(() => {
-      console.log('this.state:', this.state)
-    }, .1);
   }
 
   render(){
@@ -30,7 +58,7 @@ export default class Auth extends Component {
         <p>Password: {<input onChange={(e) => this.handleChange(e)} name='password' type='password'/>}</p>
         <p>{this.state.loginError && <p>{this.state.loginErrorMessage}</p>}</p>
         <div>
-          <button>Log In</button>
+          <button onClick={(e) => this.handleLoginFormSubmit(e)}>Log In</button>
           <button>Register</button>
         </div>
       </div>
