@@ -10,6 +10,9 @@ const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 // get access to req.body in controllers
 app.use(express.json())
 
+// express static 
+app.use(express.static('public'))
+
 // Initiate user session
 app.use(session({
   secret: SESSION_SECRET,

@@ -19,7 +19,7 @@ module.exports = {
     let user = registeredUser[0]
 
     req.session.user = {
-      id: user.user_id,
+      id: user.id,
       username: user.username
     }
 
@@ -42,7 +42,7 @@ module.exports = {
     }
 
     req.session.user = {
-      id: user.user_id,
+      id: user.id,
       username: user.username
     }
     res.status(200).send(req.session.user)
