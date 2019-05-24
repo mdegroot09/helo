@@ -29,6 +29,10 @@ export default class Auth extends Component {
         <p>Username: {<input onChange={(e) => this.handleChange(e)} name='username' type='text'/>}</p>
         <p>Password: {<input onChange={(e) => this.handleChange(e)} name='password' type='password'/>}</p>
         <p>{this.state.loginError && <p>{this.state.loginErrorMessage}</p>}</p>
+        <div>
+          <button>Log In</button>
+          <button>Register</button>
+        </div>
       </div>
     )
   }
