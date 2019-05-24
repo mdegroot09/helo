@@ -20,4 +20,8 @@ body {
   box-shadow: 0 3px 10px rgba(63, 63, 63, 0.747);
 }
 
-
+.titleAuth {
+  font-size: 70px;
+  margin: 0;
+  color: white;
+}
