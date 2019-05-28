@@ -18,7 +18,6 @@ export default class Dashboard extends Component {
       } else {
         let {id} = this.props.match.params
         axios.get(`/api/dashboard/${id}`).then(res => {
-          console.log(res.data)
           this.setState({username: res.data.username})
         }).catch(err => {
           console.log('err:', err)

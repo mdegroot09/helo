@@ -20,8 +20,6 @@ class Auth extends Component {
     const {username, password} = this.state
 		try {
       const res = await axios.post('/auth/register', {username, password})
-      console.log('registered')
-      console.log('res.data:', res.data)
       this.setState({username: username, password: '', loginError: false})
       this.props.updateId(res.data.id)
       this.props.updateUsername(username)
@@ -36,8 +34,6 @@ class Auth extends Component {
     const {username, password} = this.state
 		try {
       const res = await axios.post('/auth/login', {username, password})
-      console.log('logged in')
-      console.log('res.data:', res.data)
       this.setState({username: username, password: '', loginError: false})
 			this.props.updateId(res.data.id)
       this.props.updateUsername(username)
