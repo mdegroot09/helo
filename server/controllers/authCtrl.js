@@ -5,7 +5,6 @@ module.exports = {
     let {username, password} = req.body
     const db = req.app.get('db')
     let result = await db.get_user(username)
-    console.log('accessed')
     let existingUser = result[0]
 
     if (existingUser) {

@@ -33,3 +33,5 @@ app.get('/auth/logout', authCtrl.logout)
 app.get('/auth/checkForSession', authCtrl.checkForSession)
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
+
+// app.get()
