@@ -25,7 +25,7 @@ class Auth extends Component {
       this.setState({username: username, password: '', loginError: false})
       this.props.updateId(res.data.id)
       this.props.updateUsername(username)
-      this.props.history.push('/')
+      this.props.history.push(`/${res.data.id}`)
 		} catch (err) {
       this.setState({username: '', password: '', loginError: true})
     }
@@ -41,7 +41,7 @@ class Auth extends Component {
       this.setState({username: username, password: '', loginError: false})
 			this.props.updateId(res.data.id)
       this.props.updateUsername(username)
-      this.props.history.push('/')
+      this.props.history.push(`/${res.data.id}`)
 		} catch (err) {
 			this.setState({ username: '', password: '', loginError: true })
     }

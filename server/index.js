@@ -5,6 +5,7 @@ const session = require('express-session')
 const massive = require('massive')
 const authCtrl = require('./controllers/authCtrl')
 const auth = require('./middleware/authMiddleware')
+const dashboard = require('./controllers/dashboard')
 const {CONNECTION_STRING, SERVER_PORT, SESSION_SECRET} = process.env
 
 // get access to req.body in controllers
@@ -34,4 +35,5 @@ app.get('/auth/checkForSession', authCtrl.checkForSession)
 app.post('/auth/register', authCtrl.register)
 app.post('/auth/login', authCtrl.login)
 
-// app.get()
+// Dashboard endpoint
+app.get('/api/dashboard/:id', auth.usersOnly, dashboard.getUsername)
