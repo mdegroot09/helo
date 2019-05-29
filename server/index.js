@@ -37,3 +37,5 @@ app.post('/auth/login', authCtrl.login)
 
 // Dashboard endpoint
 app.get('/api/dashboard/:id', auth.usersOnly, dashboard.getUsername)
+
+app.get('/api/books')

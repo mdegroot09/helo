@@ -26,3 +26,13 @@ body {
   margin: 0;
   color: white;
 }
+
+.boxModel {
+  height: 100px;
+  width: 100px;
+  background: red;
+  margin: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}

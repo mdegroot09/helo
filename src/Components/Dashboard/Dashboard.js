@@ -34,7 +34,8 @@ export default class Dashboard extends Component {
           <h1>Dashboard</h1>
           <h3>Username: {this.state.username}</h3>
         </div>
-        <img src="http://localhost:4200/favicon.ico" alt=""/>
+        <img className='reactLogo' src="http://localhost:4200/favicon.ico" alt=""/>
+        <div className='boxModel'></div>
       </>
     )
   }
