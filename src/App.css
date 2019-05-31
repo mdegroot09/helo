@@ -36,3 +36,19 @@ body {
   padding: 5px;
   box-sizing: border-box;
 }
+
+.displayFloat {
+  background: darkblue;
+  border-color: darkblue;
+  border-radius: 5px;
+  color: white;
+}
+
+.blueBox {
+  background: blue;
+  display: none;
+}
+
+#display {
+  display: inline;
+}

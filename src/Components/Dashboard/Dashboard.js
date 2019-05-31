@@ -27,6 +27,19 @@ export default class Dashboard extends Component {
     })
   }
 
+  addId = (e) => {
+    let arr = document.getElementsByClassName('blueBox')
+    let button = document.getElementsByClassName('displayFloat')
+    if (arr[0].id){
+      arr[0].id = '' 
+      button[0].innerText = 'Show'
+    } else {
+      arr[0].id = 'display' 
+      button[0].innerText = 'Hide'
+    }
+    console.log('arr[0]:', arr[0])
+  }
+
   render(){
     return(
       <>
@@ -35,7 +48,11 @@ export default class Dashboard extends Component {
           <h3>Username: {this.state.username}</h3>
         </div>
         <img className='reactLogo' src="http://localhost:4200/favicon.ico" alt=""/>
-        <div className='boxModel'></div>
+        <div>
+          <div className='boxModel'></div>
+          <div className='boxModel blueBox'></div>
+        </div>
+        <button onClick={(e) => this.addId(e)} className='displayFloat' id=''>Show</button>
       </>
     )
   }
