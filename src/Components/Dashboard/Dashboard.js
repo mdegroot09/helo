@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 
 export default class Dashboard extends Component {
   constructor(){
@@ -43,16 +44,17 @@ export default class Dashboard extends Component {
   render(){
     return(
       <>
-        <div>
-          <h1>Dashboard</h1>
-          <h3>Username: {this.state.username}</h3>
-        </div>
+        <h1>Dashboard</h1>
+        <h3>Username: {this.state.username}</h3>
         <img className='reactLogo' src="http://localhost:4200/favicon.ico" alt=""/>
         <div>
           <div className='boxModel'></div>
           <div className='boxModel blueBox'></div>
         </div>
         <button onClick={(e) => this.addId(e)} className='displayFloat' id=''>Show</button>
+        <Link to='/shapes'>
+          <button >Other Shapes</button>
+        </Link>
       </>
     )
   }

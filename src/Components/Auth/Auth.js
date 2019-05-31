@@ -13,6 +13,8 @@ class Auth extends Component {
       loginError: false,
       loginErrorMessage: 'Username or password is incorrect. Please try again.'
     }
+
+    this.handleLoginFormSubmit = this.handleLoginFormSubmit.bind(this)
   }
 
   handleRegisterFormSubmit = async (e) => {
@@ -29,7 +31,7 @@ class Auth extends Component {
     }
 	}
 
-  handleLoginFormSubmit = async (e) => {
+  async handleLoginFormSubmit (e) {
 		e.preventDefault()
     const {username, password} = this.state
 		try {
